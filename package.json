@@ -5,6 +5,7 @@
     "express": "^4.19.2",
     "express.js": "^1.0.0",
     "mongoose": "^7.4.1",
+    "nodemon": "^3.1.4",
     "punycode.js": "^2.3.1"
   }
 }
