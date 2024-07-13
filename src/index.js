@@ -1,4 +1,4 @@
-const punycode = require("punycode")
+// const punycode = require("punycode")
 // Now you can use punycode.toUnicode(), punycode.toASCII(), etc.
 
 const express = require("express");
@@ -28,12 +28,13 @@ app.get("/signup", (req, res) => {
 app.post("/signup", async (req, res) => {
 
     const data = {
-        name: req.body.username,
+        email: req.body.email,
+        phone: req.body.phone,
         password: req.body.password
     }
 
     // Check if the username already exists in the database
-    const existingUser = await collection.findOne({ name: data.name });
+    const existingUser = await collection.findOne({ email: data.email });
 
     if (existingUser) {
         res.send('User already exists. Please choose a different username.');
@@ -46,6 +47,7 @@ app.post("/signup", async (req, res) => {
 
         const userdata = await collection.insertMany(data);
         console.log(userdata);
+        res.render("/signupcmplt")
     }
 
 });
@@ -53,7 +55,7 @@ app.post("/signup", async (req, res) => {
 // Login user 
 app.post("/login", async (req, res) => {
     try {
-        const check = await collection.findOne({ name: req.body.username });
+        const check = await collection.findOne({ email: req.body.email });
         if (!check) {
             res.send("User name cannot found")
         }
