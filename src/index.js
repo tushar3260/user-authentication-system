@@ -47,7 +47,7 @@ app.post("/signup", async (req, res) => {
 
         const userdata = await collection.insertMany(data);
         console.log(userdata);
-        res.render("/signupcmplt")
+        res.render("signupcpmlt");
     }
 
 });
@@ -77,5 +77,5 @@ app.post("/login", async (req, res) => {
 // Define Port for Application
 const port = 3002;
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`)
+    console.log(`Server listening on port http://localhost:3002/`)
 });
